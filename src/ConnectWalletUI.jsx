@@ -155,7 +155,7 @@ export default function ConnectWalletUI({
 
 
 
-          <span className="unit">USDT</span>
+          <span className="unit">USDC</span>
           <span className="max" onClick={() => setAmount('1000')}>Max</span>
         </div>
 
