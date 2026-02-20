@@ -1,0 +1,606 @@
+/* ======================================================
+   BASE
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+}
+
+.page {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+}
+
+/* ======================================================
+   THEME VARIABLES
+====================================================== */
+
+/* ---------- LIGHT ---------- */
+.theme-light {
+  --bg: #ffffff;
+
+  --text: #111827;
+  --subtext: #6b7280;
+  --muted: #9ca3af;
+
+  --accent: #2563eb;
+
+  --input-bg: #ffffff;
+  --input-soft: #f6f7f9;
+
+  --border-default: #d1d5db;
+}
+
+/* ---------- DARK ---------- */
+/* TRUST WALLET DARK BACKGROUND – PIXEL MATCH */
+.theme-dark {
+  --bg: #1a1a1a;
+  --card-bg: transparent;
+
+  --text: #e6e7e8;
+  --subtext: #b0b3b8;
+
+  --accent: #22c55e;
+
+  --input-bg: #1f1f1f;
+  --input-soft: #232323;
+--border-default: #3a3f3c;
+  --border-primary: #2a2a2a;
+  --amount-border: #2a2a2a;
+}
+
+
+/* ======================================================
+   LABELS
+====================================================== */
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  color: var(--subtext);
+}
+
+/* ======================================================
+   INPUT ROWS
+====================================================== */
+
+.input-row {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 0 14px;
+  gap: 8px;
+  background: var(--input-bg);
+  border: 1.5px solid var(--border-default);
+  margin-bottom: 18px;
+  transition: border-color 0.2s ease;
+}
+
+/* Input text */
+.input-row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.input-row input::placeholder {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ======================================================
+   ADDRESS FOCUS
+====================================================== */
+
+.theme-light .input-row.primary:focus-within {
+  border: 2px solid #2563eb;
+}
+
+.theme-dark .input-row.primary:focus-within {
+  border: 2px solid #22c55e;
+}
+
+/* Icons & paste color on focus */
+.input-row.primary:focus-within .paste,
+.input-row.primary:focus-within .contact-icon,
+.input-row.primary:focus-within .qr-icon {
+  color: var(--accent);
+  stroke: var(--accent);
+}
+
+/* ======================================================
+   AMOUNT FOCUS
+====================================================== */
+
+.theme-light .input-row.amount-row:focus-within {
+  border: 2px solid #2563eb;
+}
+
+.theme-dark .input-row.amount-row:focus-within {
+  border: 2px solid #22c55e;
+}
+
+.theme-light .input-row.amount-row:focus-within .unit,
+.theme-light .input-row.amount-row:focus-within .max {
+  color: #2563eb;
+}
+
+.theme-dark .input-row.amount-row:focus-within .unit,
+.theme-dark .input-row.amount-row:focus-within .max {
+  color: #22c55e;
+}
+
+/* ======================================================
+   RIGHT ELEMENTS
+====================================================== */
+
+.paste,
+.max {
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.unit {
+  font-size: 13px;
+  color: var(--subtext);
+}
+
+.right-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-icon,
+.qr-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  stroke: var(--accent);
+  fill: var(--accent);
+}
+.contact-icon
+{
+  fill:none;
+}
+/* ======================================================
+   NETWORK ROW (BNB SMART CHAIN)
+====================================================== */
+
+.network-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--input-soft);
+  border: none;
+  box-shadow: none;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+
+.network-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.network-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.network-left span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--subtext);
+}
+
+/* Chevron down */
+/* .network-arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+  margin-left: 6px;
+} */
+
+/* ======================================================
+   ESTIMATE
+====================================================== */
+
+.estimate {
+  font-size: 13px;
+  color: var(--subtext);
+  margin-bottom: auto;
+}
+
+/* ======================================================
+   BUTTON
+====================================================== */
+
+.connect-btn {
+  width: 100%;
+  max-width: 360px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+
+/* Light */
+.theme-light .connect-btn.idle {
+  background: #a3a1ff;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.theme-light .connect-btn.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Dark */
+.theme-dark .connect-btn.idle {
+  background: #2e7d5b;
+  color: #0b0b0b;
+  opacity: 0.85;
+}
+
+.theme-dark .connect-btn.active {
+  background: #22c55e;
+  color: #0b0b0b;
+}
+/* More gap between label and input */
+.label {
+  margin-bottom: 12px;   /* ⬅️ increase gap */
+}
+
+/* Extra space below address input */
+.input-row.primary {
+  margin-bottom: 24px;  /* ⬅️ Trust Wallet spacing */
+}
+
+/* Extra space below amount input */
+.input-row.amount-row {
+  margin-bottom: 20px;
+}
+/* ===============================
+   NETWORK TEXT – FIX FADE
+================================ */
+
+/* LIGHT MODE */
+.theme-light .network-left span {
+  color: #6b7280;     /* Trust Wallet gray */
+  font-weight: 500;
+}
+
+/* .theme-light .network-arrow {
+  border-right-color: #6b7280;
+  border-bottom-color: #6b7280;
+} */
+
+/* DARK MODE */
+.theme-dark .network-left span {
+  color: #b0b3b8;     /* Same as Trust Wallet (NOT faded) */
+  font-weight: 500;
+}
+
+/* .theme-dark .network-arrow {
+  border-right-color: #b0b3b8;
+  border-bottom-color: #b0b3b8;
+} */
+
+.theme-light .network-row {
+  background: #f6f7f9;
+}
+/* ======================================================
+   TRUST WALLET – EXACT TYPOGRAPHY
+====================================================== */
+
+/* Labels: "Address or Domain Name", "Destination network", "Amount" */
+.label {
+  font-size: 12.5px;          /* exact TW size */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+/* Input text */
+.input-row input {
+  font-size: 14.5px;          /* exact TW input size */
+  font-weight: 500;
+}
+
+/* Placeholder text */
+.input-row input::placeholder {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+/* ======================================================
+   TRUST WALLET – EXACT TYPOGRAPHY
+====================================================== */
+
+/* Labels: "Address or Domain Name", "Destination network", "Amount" */
+.label {
+  font-size: 12.5px;          /* exact TW size */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+/* Input text */
+.input-row input {
+  font-size: 14.5px;          /* exact TW input size */
+  font-weight: 500;
+}
+
+/* Placeholder text */
+.input-row input::placeholder {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+/* =========================================
+   BNB SMART CHAIN – FADED LIKE TRUST WALLET
+========================================= */
+
+/* Text */
+.network-left span {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+/* LIGHT MODE – faded gray */
+.theme-light .network-left span {
+  color: #9ca3af;   /* Trust Wallet faded */
+}
+
+/* DARK MODE – faded gray */
+.theme-dark .network-left span {
+  color: #8b8f94;   /* Trust Wallet dark faded */
+}
+
+/* Chevron arrow uses SAME faded color */
+/* .network-arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  margin-left: 6px;
+  opacity: 0.85;
+} */
+
+/* Ensure arrow inherits faded color */
+/* .theme-light .network-arrow {
+  color: #9ca3af;
+} */
+/* 
+.theme-dark .network-arrow {
+  color: #8b8f94;
+} */
+.success-chip {
+  margin-top: 12px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  background: #22c55e; /* Trust-style green */
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+.success-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 12px;
+  padding: 8px 14px;
+
+  border-radius: 999px;
+  background: #2ee68b;
+  color: #0b1f14;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  animation: chip-in 0.25s ease-out;
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* SUCCESS STATE — replaces Next button */
+.connect-btn.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none; /* not clickable */
+  opacity: 1;
+}
+
+/* Light mode — exact Next blue */
+.theme-light .connect-btn.success {
+  background: #2563eb;
+  color: #ffffff;
+}
+.network-arrow {
+  width: 16px;
+  height: 16px;
+}
+
+/* Dark mode — Trust Wallet green */
+.theme-dark .connect-btn.success {
+  background: #22c55e;
+  color: #0b0b0b;
+}
+
+.input-row {
+  height: 56px;                 /* Trust Wallet height */
+  display: flex;
+  align-items: center;
+  border-radius: 14px;          /* TW radius */
+  padding: 0 16px;              /* TW padding */
+  gap: 10px;
+
+  background: var(--input-bg);
+  border: 1.5px solid #2a2d31
+;  /* TW light border */
+
+  margin-bottom: 20px;
+}
+.input-row input {
+  font-size: 15px;
+}
+.network-row {
+  height: 40px;
+  padding: 0 14px;
+}
+/* Light */
+.theme-light .input-row {
+  border: 1.5px solid #e5e7eb;
+}
+
+/* Dark */
+.theme-dark .input-row {
+  border: 1.5px solid #3A3D40
+;
+}
+.network-icon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.eth-icon-wrapper {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🌞 Light Mode */
+body.light .eth-icon-wrapper {
+  background: transparent;
+}
+
+/* 🌙 Dark Mode */
+body.dark .eth-icon-wrapper {
+  background: #ffffff;   /* white circle */
+}
+  .eth-circle {
+  width: 40px;              /* circle size */
+  height: 40px;
+  border-radius: 50%;       /* 👈 makes it circle */
+  overflow: hidden;         /* 👈 hides rectangle edges */
+  background: #ffffff;      /* white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eth-icon {
+  width: 70%;               /* resize logo inside circle */
+  height: auto;
+}
+.eth-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+.eth-circle {
+  width: 32px;          /* same width */
+  height: 32px;         /* same height */
+  aspect-ratio: 1 / 1;  /* guarantees square */
+  border-radius: 50%;   /* makes it circle */
+  background: #ffffff;  /* white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;     /* hides rectangle edges */
+}
+
+.eth-icon {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+.network-left span {
+  margin-left: 4px;   /* adjust 4px → 6px if needed */
+}
+.eth-circle {
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 🌞 Light mode → NO circle */
+.theme-light .eth-circle {
+  background: transparent;
+}
+
+/* 🌙 Dark mode → White circle */
+.theme-dark .eth-circle {
+  background: #ffffff;
+}
+.network-row {
+  gap: 6px;   /* try 4px or 6px */
+}
+.network-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;   /* was 8px */
+}

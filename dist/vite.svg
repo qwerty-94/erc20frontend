@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Right-side gradient -->
+    <linearGradient id="rightGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4DFF9A"/>
+      <stop offset="100%" stop-color="#0B5CFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left half -->
+  <path
+    d="M256 32L96 96v160c0 123.6 84.6 195.3 160 233.6V32z"
+    fill="#0B00FF"
+  />
+
+  <!-- Right half -->
+  <path
+    d="M256 32l160 64v160c0 123.6-84.6 195.3-160 233.6V32z"
+    fill="url(#rightGradient)"
+  />
+</svg>
